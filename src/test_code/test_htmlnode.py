@@ -1,5 +1,5 @@
 import unittest
-from src.htmlnode import HTMLNode, LeafNode
+from src.htmlnode import HTMLNode, LeafNode, ParentNode
 
 
 class TestHtmlNode(unittest.TestCase):
@@ -49,6 +49,31 @@ class TestHtmlNode(unittest.TestCase):
         node = LeafNode(None, "Hello World")
         self.assertEqual(node.to_html(), "Hello World")
 
+    def test_to_html_with_children(self):
+        child_node = LeafNode("p", "Hello mike testing")
+        parent_node = ParentNode("div", [child_node])
+        self.assertEqual(parent_node.to_html(), "<div><p>Hello mike testing</p></div>")
+    
+    def test_to_html_with_multiple_children(self):
+        grand_child = LeafNode("span", "Hello jack")
+        child_node = ParentNode("p", [grand_child])
+        parent_node = ParentNode("div", [child_node])
+        self.assertEqual(parent_node.to_html(), "<div><p><span>Hello jack</span></p></div>")
+    
+    def test_to_html_many_children(self):
+        node = ParentNode(
+            "p",
+            [
+                LeafNode("b", "Bold text"),
+                LeafNode(None, "Normal text"),
+                LeafNode("i", "italic text"),
+                LeafNode(None, "Normal text"),
+            ],
+        )
+        self.assertEqual(
+            node.to_html(),
+            "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>",
+        )
 
 
 if __name__ == '__main__':
