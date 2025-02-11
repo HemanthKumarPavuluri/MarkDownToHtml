@@ -1,6 +1,8 @@
 from src.textnode import TextNode, TextType
 import re
-
+"""
+splitting nodes based on delimiter and returning a list of TextNodes
+"""
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     new_nodes = []
     for node in old_nodes:
@@ -22,13 +24,17 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         new_nodes.extend(split_nodes)
     return new_nodes
 
-
+"""
+Extracting markdown images from text
+"""
 
 def extract_markdown_images(text):
     regex = r"!\[(.*?)\]\((.*?)\)"
     match = re.findall(regex, text)
     return match
-
+"""
+Extracting markdown links from text
+"""
 
 def extract_markdown_links(text):
     regex = r"\[(.*?)\]\((.*?)\)"
@@ -91,5 +97,24 @@ def split_nodes_link(old_nodes):
             new_nodes.append(TextNode(original_text, TextType.TEXT))
 
     return new_nodes
+
+
+"""
+convert a raw string of markdown-flavored text into a list of TextNode objects.
+"""
+def text_to_textnodes(text):
+    nodes = [TextNode(text, TextType.TEXT)]
+    nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
+    nodes = split_nodes_delimiter(nodes, "*", TextType.ITALIC)
+    nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
+    nodes = split_nodes_image(nodes)
+    nodes = split_nodes_link(nodes)
+    return nodes
+
+
+
+
+
+
 
 
