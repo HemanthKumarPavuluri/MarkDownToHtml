@@ -1,5 +1,6 @@
 import unittest
-from src.textnode import TextNode, TextType
+from src.textnode import TextNode, TextType, text_node_to_html_node
+from src.htmlnode import LeafNode
 
 class TextTextNode(unittest.TestCase):
 
@@ -18,8 +19,24 @@ class TextTextNode(unittest.TestCase):
         expected_repr = "TextNode(Hello, bold, https://example.com)"
         self.assertEqual(repr(node), expected_repr)
 
-# return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
-    
+
+class TestTextNodeToHtmlNode(unittest.TestCase):
+
+    def test_text(self):
+        node = TextNode("this is a text node", TextType.TEXT)
+        html_node = text_node_to_html_node(node)
+        self.assertEqual(html_node.tag, None)
+        self.assertEqual(html_node.value, "this is a text node")
+
+    def test_image(self):
+        node = TextNode("this is an image", TextType.IMAGE, "https://myimage.jpg")
+        html_node = text_node_to_html_node(node)
+        self.assertEqual(html_node.tag, "img")
+        self.assertEqual(html_node.value, "")
+        self.assertEqual(html_node.props, {"src": "https://myimage.jpg","alt": "this is an image"})
+
+
+
 if __name__ == '__main__':
     unittest.main()
 
