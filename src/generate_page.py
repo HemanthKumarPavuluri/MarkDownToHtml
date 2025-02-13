@@ -36,3 +36,40 @@ def extract_title(markdown):
     raise ValueError("No H1 header found in markdown")
 
 
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    dir_list = os.listdir(dir_path_content)
+
+    for file in dir_list:
+        from_path = os.path.join(dir_path_content, file)
+        dest_path = os.path.join(dest_dir_path, file)
+
+        if os.path.isdir(from_path):
+            print(f"Processing directory: {from_path}")
+            generate_pages_recursive(from_path, template_path, dest_path)
+
+        elif from_path.endswith(".md"):
+            os.makedirs(dest_dir_path, exist_ok=True)
+            dest_file_path = dest_path.replace(".md", ".html")
+            print(f"Generating page: {from_path} -> {dest_file_path}")
+            generate_page(from_path, template_path, dest_file_path)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

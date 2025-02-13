@@ -1,5 +1,5 @@
 
-from generate_page import generate_page
+from generate_page import generate_pages_recursive
 from copystaticfile import delete_public_directory, copy_files_recursively
 
 dir_path_static = "./static"
@@ -12,7 +12,7 @@ def main():
 
     print("Copying static files to public directory...")
     copy_files_recursively(dir_path_static, dir_path_public)
-    generate_page("content/index.md", "template.html", "public/index.html")
+    generate_pages_recursive("content", "template.html", "public")
 
 
 if __name__ == '__main__':
