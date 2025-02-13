@@ -1,5 +1,13 @@
 import os, shutil
 
+
+
+def delete_public_directory(path):
+    """ Deletes public directory recursively"""
+    print("Deleting public directory...")
+    if os.path.exists(path):
+        shutil.rmtree(path)
+
 def copy_files_recursively(source_path, dest_path):
     if not os.path.exists(dest_path):
         os.mkdir(dest_path)
@@ -13,6 +21,7 @@ def copy_files_recursively(source_path, dest_path):
         else:
             copy_files_recursively(from_path, to_path)
     
+
 
 
 

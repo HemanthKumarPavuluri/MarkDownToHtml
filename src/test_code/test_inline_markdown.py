@@ -1,7 +1,7 @@
 import unittest
 from src.inline_markdown import split_nodes_delimiter, extract_markdown_images, extract_markdown_links, split_nodes_image, split_nodes_link, text_to_textnodes
 from src.textnode import TextNode, TextType
-
+from src.generate_page import extract_title
 
 class TestInlineMarkdown(unittest.TestCase):
     def test_delim_bold(self):
@@ -173,9 +173,16 @@ class TestInlineMarkdown(unittest.TestCase):
             ],
             nodes,
         )
+    def test_extract_title(self):
+        self.assertEqual(extract_title("# Hello"), "Hello")
+        self.assertEqual(extract_title("#    Trimmed Title   "), "Trimmed Title")
 
+    def test_multiple_titles(self):
+        self.assertEqual(extract_title("# First Title\n## Subtitle"), "First Title")
 
-
+    def test_no_title(self):
+        with self.assertRaises(ValueError):
+            extract_title("No title here")
 
 
 if __name__ == "__main__":

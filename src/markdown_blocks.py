@@ -1,8 +1,8 @@
-from src.htmlnode import (
+from htmlnode import (
     ParentNode,
     )
-from src.inline_markdown import text_to_textnodes
-from src.textnode import text_node_to_html_node
+from inline_markdown import text_to_textnodes
+from textnode import text_node_to_html_node
 
 def markdown_to_blocks(markdown):
     blocks = markdown.split("\n\n")
@@ -169,7 +169,4 @@ def quote_to_html_node(block):
 
 
 
-
-
-
-
+    

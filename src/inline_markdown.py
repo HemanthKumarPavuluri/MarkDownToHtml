@@ -1,4 +1,4 @@
-from src.textnode import TextNode, TextType
+from textnode import TextNode, TextType
 import re
 """
 splitting nodes based on delimiter and returning a list of TextNodes
