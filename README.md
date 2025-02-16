@@ -24,10 +24,28 @@ cd MarkDownToHtml
 4. Run the Static Site Generator
   ./main.sh
 
-📂 Project Structure
 
-MarkdownToHtml/ │── content/ # Markdown files to be converted │ ├── index.md # Main homepage content │ ├── majesty/ # Subdirectory with additional content │ │ ├── index.md │── public/ # Generated HTML output (ignored in Git) │── static/ # Static assets (CSS, images) │ ├── index.css │ ├── images/ │── template.html # HTML template with placeholders │── src/ │ ├── main.py # Main script to process Markdown │ ├── markdown_blocks.py # Markdown parsing functions │── main.sh # Bash script to automate the process │── README.md # Project documentation (this file) │── .gitignore # Ignore generated public/ directory
+## 📂 Project Structure
 
+```bash
+MarkdownToHtml/
+├── content/                # Markdown files to be converted
+│   ├── index.md            # Main homepage content
+│   ├── majesty/            # Subdirectory with additional content
+│   │   ├── index.md
+├── public/                 # Generated HTML output (ignored in Git)
+├── static/                 # Static assets (CSS, images)
+│   ├── index.css
+│   ├── images/
+├── template.html           # HTML template with placeholders
+├── src/
+│   ├── main.py             # Main script to process Markdown
+│   ├── markdown_blocks.py  # Markdown parsing functions
+├── main.sh                 # Bash script to automate the process
+├── README.md               # Project documentation (this file)
+├── .gitignore              # Ignore generated public/ directory
+
+```
 
 🖥️ Usage
 
