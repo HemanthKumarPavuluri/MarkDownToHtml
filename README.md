@@ -13,8 +13,10 @@ This project is a static site generator that converts Markdown (.md) files into 
 
 🛠️ Installation & Setup
 1. Clone the Repository
+```
 git clone https://github.com/HemanthKumarPavuluri/MarkDownToHtml.git
 cd MarkDownToHtml
+```
 
 2. Ensure Python 3 is Installed
    python3 --version
@@ -23,6 +25,7 @@ cd MarkDownToHtml
   ./main.sh
 
 📂 Project Structure
+
 MarkdownToHtml/
 │── content/                # Markdown files to be converted
 │   ├── index.md            # Main homepage content
@@ -42,11 +45,12 @@ MarkdownToHtml/
 
 
 🖥️ Usage
+
 To generate pages for all Markdown files:
-python3 src/main.py
+```python3 src/main.py```
 
 To start a simple web server:
-cd public && python3 -m http.server 8888
+```cd public && python3 -m http.server 8888```
 
 
 🌟 Contributing
