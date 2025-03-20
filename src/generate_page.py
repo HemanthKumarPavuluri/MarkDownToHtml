@@ -20,6 +20,10 @@ def generate_page(from_path, template_path, dest_path, base_path="/"):
     final_html = final_html.replace('href="/', f'href="{base_path}')
     final_html = final_html.replace('src="/', f'src="{base_path}')
 
+
+    final_html = final_html.replace('href="majesty"', 'href="./blog/majesty/"')
+
+
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
 
     with open(dest_path, "w", encoding="utf-8") as f:
