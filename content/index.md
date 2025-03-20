@@ -1,8 +1,12 @@
 # Tolkien Fan Club
 
-**I like Tolkien**. Read my [first post here](/majesty)
+I like Tolkien. Read my [first post here](/majesty).
 
-> All that is gold does not glitter
+## Blog Posts
+- [Glorfindel's Tale](/blog/glorfindel/)
+- [Tom Bombadil](/blog/tom/)
+- [Majesty of Middle-earth](/blog/majesty/)
+
 
 ## Reasons I like Tolkien
 
